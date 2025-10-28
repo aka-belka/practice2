@@ -1,0 +1,97 @@
+ <!DOCTYPE html>
+ <html lamg = "ru"> 
+    <head> 
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>Дневник</title>
+        <link rel="stylesheet" href="../styles/styles.css"> 
+    </head> 
+    <body> 
+        <div class="page"> 
+            <header class="header">
+                <img  class="header__photo" src="../images/mirea.jpg" alt="Лого"> 
+                <h1 class="header__title">Бельская Валерия Сергеевна</h1>
+            </header> 
+            <nav class="nav"> 
+                <ul class="nav__list"> 
+                    <li class="nav__item">
+                        <a class="nav__link" href="../index.html">Главная</a>
+                    </li> 
+                    <li class="nav__item">
+                        <a class="nav__link" href="projects.html">Проекты</a>
+                    </li>  
+                    <li class="nav__item nav__item--active">
+                        <a class="nav__link" href="diary.html">Дневник</a>
+                    </li> 
+                    <li class="nav__item">
+                        <a class="nav__link" href="contacts.html">Контакты</a>
+                    </li> 
+                </ul> 
+            </nav> 
+            <main class="content">
+                <section class="academ-progress"> 
+                    <h2 class="academ-progress__title">Мой учебный прогресс</h2>
+                    <div class="academ-progress__list"> 
+                        <div class="academ-progress-row">
+                            <p class="academ-progress-item">28 окт - Работа с CSS</p> 
+                        </div>
+                        <div class="academ-progress-row">
+                            <p class="academ-progress-item">23 окт - Верстка макета сайта</p> 
+                            <img src="../images/icons/checkmark.png" class="contact-item_icon" alt="done">
+                        </div>
+                        <div class="academ-progress-row">
+                            <p class="academ-progress-item">21 окт - Bootstrap основы</p> 
+                            <img src="../images/icons/checkmark.png" class="contact-item_icon" alt="done">
+                        </div>
+                        <div class="academ-progress-row">
+                            <p class="academ-progress-item">15 окт - Работа с дизайном</p> 
+                        </div>
+                        <div class="academ-progress-row">
+                            <p class="academ-progress-item">8 окт - JS основы</p> 
+                            <img src="../images/icons/checkmark.png" class="contact-item_icon" alt="done">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="courses"> 
+                    <h2 class="courses__title">Текущие курсы</h2> 
+                    <div class="courses__list"> 
+                        <div class="course-item">
+                            <div class="course-item__header">
+                                <span>Веб-разработка</span>
+                                <span class="course-item__percent">90%</span>
+                            </div>
+                            <div class="course-item__progress">
+                                <div class="course-item__progress-bar HTML_CSS"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-item">
+                            <div class="course-item__header">
+                                <span>JavaScript</span>
+                                <span class="course-item__percent">70%</span>
+                            </div>
+                            <div class="course-item__progress">
+                                <div class="course-item__progress-bar JS"></div>
+                            </div>
+                        </div> 
+                        
+                        <div class="course-item">
+                            <div class="course-item__header">
+                                <span>C#</span>
+                                <span class="course-item__percent">50%</span>
+                            </div>
+                            <div class="course-item__progress">
+                                <div class="course-item__progress-bar CS"></div>
+                            </div>
+                        </div> 
+                    </div> 
+                    <button type="submit" class="btn courses__submit">Добавить запись</button> 
+                </section> 
+            </main> 
+            <footer class="footer">
+                <p class="footer__text">© 2025 Контакты</p>
+            </footer>
+        </div>    
+    </body>
+ </html>

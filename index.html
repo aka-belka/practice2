@@ -1,0 +1,138 @@
+ <!DOCTYPE html>
+ <html lamg = "ru"> 
+    <head> 
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>Главная</title>
+        <link rel="stylesheet" href="styles/styles.css"> 
+    </head> 
+    <body> 
+        <div class="page"> 
+            <header class="header">
+                <img  class="header__photo" src="images/mirea.jpg" alt="Лого"> 
+                <h1 class="header__title">Бельская Валерия Сергеевна</h1>
+            </header> 
+            <nav class="nav"> 
+                <ul class="nav__list"> 
+                    <li class="nav__item nav__item--active">
+                        <a class="nav__link" href="index.html">Главная</a>
+                    </li> 
+                    <li class="nav__item">
+                        <a class="nav__link" href="pages/projects.html">Проекты</a>
+                    </li>  
+                    <li class="nav__item">
+                        <a class="nav__link" href="pages/diary.html">Дневник</a>
+                    </li> 
+                    <li class="nav__item">
+                        <a class="nav__link" href="pages/contacts.html">Контакты</a>
+                    </li> 
+                </ul> 
+            </nav> 
+            <main class="content"> 
+                <section class="profile">
+                    <div class="profile__card"> 
+                        <img  class="profile__photo" src="images/photo.jpg" alt="Фото автора"> 
+                        <div class="profile__info">
+                            <p class="profile__text">
+                                Привет! Я студент группы ЭФБО-02-24. Увлекаюсь веб-разработкой.
+                            </p>
+                            <p class="profile__text">
+                                <a href="assets/resume.pdf" download>Скачать резюме</a>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="skills"> 
+                    <h2 class="skills__title">Мои навыки</h2>
+                    <div class="skills__list"> 
+                        <div class="skills-column">
+                            <div class="skill-item">
+                                <div class="skill-item__header">
+                                    <span>HTML/CSS</span>
+                                    <span class="skill-item__percent">90%</span>
+                                </div>
+                                <div class="skill-item__progress">
+                                    <div class="skill-item__progress-bar HTML_CSS"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-item__header">
+                                    <span>JavaScript</span>
+                                    <span class="skill-item__percent">80%</span>
+                                </div>
+                                <div class="skill-item__progress">
+                                    <div class="skill-item__progress-bar JS"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills-column">
+                            <div class="skill-item">
+                                <div class="skill-item__header">
+                                    <span>Bootstrap</span>
+                                    <span class="skill-item__percent">85%</span>
+                                </div>
+                                <div class="skill-item__progress">
+                                    <div class="skill-item__progress-bar Bootstrap" ></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-item__header">
+                                    <span>React</span>
+                                    <span class="skill-item__percent">60%</span>
+                                </div>
+                                <div class="skill-item__progress">
+                                    <div class="skill-item__progress-bar React"></div>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+                </section>
+
+                <section class="projects"> 
+                    <h2 class="projects__title">Лучшие проекты</h2>
+                    <div class="projects__list ">
+                        <article class="project-item">
+                            <img class="project__photo" src="images/project1.png" alt="Фото проекта 1"> 
+                            <h3 class="project-item__name">Личный сайт</h3> 
+                            <p class="project-item__desc">Сайт-портфолио на HTML, CSS и Bootstrap с адаптивным дизайном.</p> 
+                            <div class="project-tags">
+                                <span class="project-tags__badge">HTML</span>
+                                <span class="project-tags__badge">CSS</span>
+                                <span class="project-tags__badge">Bootstrap</span>
+                            </div>
+                        </article>
+
+                        <article class="project-item">
+                            <img class="project__photo" src="images/project2.png" alt="Фото проекта 2"> 
+                            <h3 class="project-item__name">My Data Base</h3> 
+                            <p class="project-item__desc">Настольное приложение с графическим интерфейсом, взаимодействующее с БД PostgreSQL, фиксирующее эксперименты по внедрению ИИ в обнаружение DDoS-атак.</p>
+                            <div class="project-tags"> 
+                                <span class="project-tags__badge">Python</span> 
+                                <span class="project-tags__badge">SQL</span> 
+                                <span class="project-tags__badge">HTML</span> 
+                                <span class="project-tags__badge">CSS</span>
+                            </div> 
+                        </article>
+
+                        <article class="project-item">
+                            <img class="project__photo" src="images/project3.png" alt="Фото проекта 3"> 
+                            <h3 class="project-item__name">Игра "Косынка"</h3> 
+                            <p class="project-item__desc">Десктопная версия пасьянса на Unreal Engine 5 c системой локализации и динамической сменой тем оформления.</p>
+                            <div class="project-tags"> 
+                                <span class="project-tags__badge">C++</span> 
+                                <span class="project-tags__badge">Blueprint</span> 
+                            </div> 
+                        </article>
+                    </div>
+                </section> 
+            </main> 
+            <footer class="footer">
+                <p class="footer__text">© 2025 Контакты</p>
+            </footer>
+        </div>    
+    </body>
+ </html>

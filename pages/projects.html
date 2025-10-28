@@ -1,0 +1,185 @@
+ <!DOCTYPE html>
+ <html lamg = "ru"> 
+    <head> 
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>Проекты</title>
+        <link rel="stylesheet" href="../styles/styles.css"> 
+        <script src="../scripts/main.js" defer></script>
+    </head> 
+    <body> 
+        <div class="page"> 
+            <header class="header">
+                <img  class="header__photo" src="../images/mirea.jpg" alt="Лого"> 
+                <h1 class="header__title">Бельская Валерия Сергеевна</h1>
+            </header> 
+            <nav class="nav"> 
+                <ul class="nav__list"> 
+                    <li class="nav__item">
+                        <a class="nav__link" href="../index.html">Главная</a>
+                    </li> 
+                    <li class="nav__item nav__item--active">
+                        <a class="nav__link" href="projects.html">Проекты</a>
+                    </li>  
+                    <li class="nav__item">
+                        <a class="nav__link" href="diary.html">Дневник</a>
+                    </li> 
+                    <li class="nav__item">
+                        <a class="nav__link" href="contacts.html">Контакты</a>
+                    </li> 
+                </ul> 
+            </nav> 
+            <main class="content">
+                <section class="projects"> 
+                    <h2 class="projects__title">Мои проекты</h2>
+                    <div class="projects-filters">
+                        <button class="filter-btn active" data-filter="all">Все</button>
+                        <button class="filter-btn" data-filter="html">HTML/CSS</button>
+                        <button class="filter-btn" data-filter="js">JavaScript</button>
+                        <button class="filter-btn" data-filter="python">Python</button>
+                        <button class="filter-btn" data-filter="cpp">C++</button>
+                        <button class="filter-btn" data-filter="bootstrap">Bootstrap</button>
+                    </div>
+                    <div class="projects__list">
+                        <article class="project-item" data-categories="html,bootstrap" onclick="openModal('modal-project1')">
+                            <img class="project__photo" src="../images/project1.png" alt="Фото проекта 1"> 
+                            <h3 class="project-item__name">Личный сайт</h3> 
+                            <p class="project-item__desc">Сайт-портфолио на HTML, CSS и Bootstrap с адаптивным дизайном.</p>
+                            <div class="project-tags">
+                                <span class="project-tags__badge">HTML</span>
+                                <span class="project-tags__badge">CSS</span>
+                                <span class="project-tags__badge">Bootstrap</span>
+                            </div>
+                        </article>
+
+                        <article class="project-item" data-categories="python,sql,html,css" onclick="openModal('modal-project2')">
+                            <img class="project__photo" src="../images/project2.png" alt="Фото проекта 2"> 
+                            <h3 class="project-item__name">My Data Base</h3> 
+                            <p class="project-item__desc">Настольное приложение с графическим интерфейсом, взаимодействующее с БД PostgreSQL, фиксирующее эксперименты по внедрению ИИ в обнаружение DDoS-атак.</p>
+                            <div class="project-tags">
+                                <span class="project-tags__badge">Python</span>
+                                <span class="project-tags__badge">SQL</span>
+                                <span class="project-tags__badge">HTML</span>
+                                <span class="project-tags__badge">CSS</span>
+                            </div>
+                        </article>
+
+                        <article class="project-item" data-categories="cpp"  onclick="openModal('modal-project3')">
+                            <img class="project__photo" src="../images/project3.png" alt="Фото проекта 3"> 
+                            <h3 class="project-item__name">Игра "Косынка"</h3> 
+                            <p class="project-item__desc">Десктопная версия пасьянса на Unreal Engine 5 c системой локализации и динамической сменой тем оформления.</p>
+                            <div class="project-tags">
+                                <span class="project-tags__badge">C++</span>
+                                <span class="project-tags__badge">Blueprint</span>
+                            </div>
+                        </article>
+
+                        <article class="project-item" data-categories="python,js,html,css" onclick="openModal('modal-project4')">
+                            <img class="project__photo" src="../images/project4.png" alt="Фото проекта 4"> 
+                            <h3 class="project-item__name">Сайт футбольного клуба "Кокос Group"</h3> 
+                            <p class="project-item__desc">Веб-платформа для ФК и болельщиков футбола со свежими новостями, онлайн-магазином и возможностью смотрть матчи в режиме онлайн.</p> 
+                                <div class="project-tags">
+                                <span class="project-tags__badge">Python</span>
+                                <span class="project-tags__badge">JavaScript</span>
+                                <span class="project-tags__badge">HTML</span>
+                                <span class="project-tags__badge">CSS</span>
+                            </div>
+                        </article>
+                    </div>
+                </section> 
+            </main> 
+            <footer class="footer">
+                <p class="footer__text">© 2025 Контакты</p>
+            </footer>
+        </div> 
+        <div id="modal-project1" class="modal" hidden>
+            <div class="modal__backdrop"></div>
+            <div class="modal__window">
+                <button class="modal__close" onclick="closeModal('modal-project1')">×</button>
+                <h2>Личный сайт</h2>
+                <div class="modal__content">
+                    <img src="../images/project1.png" alt="Личный сайт" width="100%">
+                    <img src="../images/project11.png" alt="Личный сайт" width="100%">
+                    <img src="../images/project12.png" alt="Личный сайт" width="100%">
+                    <p><strong>Полное описание:</strong> Сайт-портфолио, разработанный с использованием современных веб-технологий. Адаптивный дизайн обеспечивает корректное отображение на всех устройствах.</p>
+                    <div class="modal__links">
+                        <a href="C:\Users\Пользователь\Desktop\Фронт\front1\index_v1.html" target="_blank" class="modal__link">Живая версия</a>
+                        <a href="https://github.com/aka-belka/front-project1" target="_blank" class="modal__link">Исходный код</a>
+                    </div>
+                    <div class="project-tags">
+                        <span class="project-tags__badge">HTML</span>
+                        <span class="project-tags__badge">CSS</span>
+                        <span class="project-tags__badge">Bootstrap</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="modal-project2" class="modal" hidden>
+            <div class="modal__backdrop"></div>
+            <div class="modal__window">
+                <button class="modal__close" onclick="closeModal('modal-project2')">×</button>
+                <h2>My Data Base</h2>
+                <div class="modal__content">
+                    <img src="../images/project2.png" alt="My Data Base" width="100%">
+                    <img src="../images/project21.png" alt="My Data Base" width="100%">
+                    <img src="../images/project22.png" alt="My Data Base" width="100%">
+                    <p><strong>Полное описание:</strong> Настольное приложение с графическим интерфейсом для управления экспериментами по обнаружению DDoS-атак с использованием искусственного интеллекта.</p>
+                    <div class="modal__links">
+                        <a href="https://github.com/bergks/Database_project" class="modal__link">Демо версия</a>
+                        <a href="https://github.com/bergks/Database_project" target="_blank" class="modal__link">Исходный код</a>
+                    </div>
+                    <div class="project-tags">
+                        <span class="project-tags__badge">Python</span>
+                        <span class="project-tags__badge">SQL</span>
+                        <span class="project-tags__badge">HTML</span>
+                        <span class="project-tags__badge">CSS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="modal-project3" class="modal" hidden>
+            <div class="modal__backdrop"></div>
+            <div class="modal__window">
+                <button class="modal__close" onclick="closeModal('modal-project3')">×</button>
+                <h2>Игра Косынка</h2>
+                <div class="modal__content">
+                    <img src="../images/project3.png" alt="Игра Косынка" width="100%">
+                    <img src="../images/project31.png" alt="Игра Косынка" width="100%">
+                    <img src="../images/project32.png" alt="Игра Косынка" width="100%">
+                    <p><strong>Полное описание:</strong> Десктопная версия пасьянса на Unreal Engine 5 c системой локализации и динамической сменой тем оформления.</p>
+                    <div class="modal__links">
+                        <a href="https://github.com/aka-belka" target="_blank" class="modal__link">Демо версия</a>
+                        <a href="https://github.com/aka-belka" target="_blank" class="modal__link">Исходный код</a>
+                    </div>
+                    <div class="project-tags">
+                        <span class="project-tags__badge">C++</span>
+                        <span class="project-tags__badge">Blueprint</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="modal-project4" class="modal" hidden>
+            <div class="modal__backdrop"></div>
+            <div class="modal__window">
+                <button class="modal__close" onclick="closeModal('modal-project4')">×</button>
+                <h2>Сайт футбольного клуба "Кокос Group"</h2>
+                <div class="modal__content">
+                    <img src="../images/project4.png" alt="Сайт футбольного клуба Кокос Group" width="100%">
+                    <img src="../images/project41.png" alt="Сайт футбольного клуба Кокос Group" width="100%">
+                    <img src="../images/project42.png" alt="Сайт футбольного клуба Кокос Group" width="100%">
+                    <p><strong>Полное описание:</strong> Веб-платформа для ФК и болельщиков футбола со свежими новостями, онлайн-магазином и возможностью смотрть матчи в режиме онлайн.</p>
+                    <div class="modal__links">
+                        <a href="C:\Users\Пользователь\Desktop\index.html" target="_blank" class="modal__link">Демо версия</a>
+                        <a href="https://git.codenrock.com/kokos-hackathon-2024-1266/cnrprod1727974533-team-80681/zagruzka-resheniya-kokos-001/-/tree/master/%D1%81%D0%B0%D0%B9%D1%82%20%D1%84%D1%83%D1%82%D0%B1%D0%BE%D0%BB%D1%8C%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%BA%D0%BB%D1%83%D0%B1%D0%B0%20%22%D0%9A%D0%BE%D0%BA%D0%BE%D1%81%20%D0%93%D1%80%D1%83%D0%BF%D0%BF%22?ref_type=heads" target="_blank" class="modal__link">Исходный код</a>
+                    </div>
+                    <div class="project-tags">
+                        <span class="project-tags__badge">Python</span>
+                        <span class="project-tags__badge">JavaScript</span>
+                        <span class="project-tags__badge">HTML</span>
+                        <span class="project-tags__badge">CSS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+ </html>

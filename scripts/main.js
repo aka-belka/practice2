@@ -187,7 +187,9 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
 const form = document.getElementById('contactForm');
 const successMessage = document.getElementById('successMessage');
-
+if (!form) {
+    return; 
+}
 const inputs = form.querySelectorAll('input, textarea');
 inputs.forEach(input => {
     input.addEventListener('blur', validateField);

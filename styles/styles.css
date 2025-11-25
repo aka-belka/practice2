@@ -238,6 +238,10 @@ a, .btn, input, textarea { outline-offset: 2px; }
     transition: transform var(--transition-fast);
     
 }
+.nav-link[aria-current="page"] { 
+    background: #0066cc; 
+    color: white; 
+} 
 
 .nav__item--active .nav__link { 
     background: var(--color-accent); 
@@ -445,7 +449,9 @@ a, .btn, input, textarea { outline-offset: 2px; }
     max-width: 325px;
     width: 100%;
     min-width: 0;
-     flex: 0 1 325px; 
+    flex: 0 1 325px; 
+
+    
 }
 
 .project-item:hover { 
@@ -461,7 +467,10 @@ a, .btn, input, textarea { outline-offset: 2px; }
 .project-item:focus-within {
     transform: translateY(-2px);
 }
-
+.project-tags {
+    margin-top: auto;
+    padding-top: var(--space-sm);
+}
  .project-item__name { 
     font-size: var(--font-size-md);
     color: var(--color-text); 
@@ -506,18 +515,6 @@ a, .btn, input, textarea { outline-offset: 2px; }
      .contacts-area {
         container-type: inline-size;
         container-name: contacts;
-    }
-    @container contacts (min-width: 640px) {
-        .contacts__list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-md);
-        }
-    }
-    @container contacts (min-width: 960px) {
-        .contacts__list {
-            grid-template-columns: repeat(3, 1fr);
-        }
     }
 } 
 
@@ -568,7 +565,8 @@ a, .btn, input, textarea { outline-offset: 2px; }
 }
 .academ-progress__list{
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;;
     gap: var(--space-md);
 
     background: var(--color-white); 
@@ -698,7 +696,8 @@ a, .btn, input, textarea { outline-offset: 2px; }
     font-size: var(--font-size-xl);
 }
 .contacts__list{
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    grid-auto-flow: row;
+    grid-template-columns: 1fr; 
     gap: var(--space-md);
 }
 .contact-item{
@@ -763,9 +762,8 @@ a, .btn, input, textarea { outline-offset: 2px; }
 }
 
 /* =================================================МОДАЛЬНОЕ ОКНО============================================== */
-
 .modal[hidden] {
-    display: none;
+    display: none !important;
 }
 
 .modal {
@@ -779,6 +777,7 @@ a, .btn, input, textarea { outline-offset: 2px; }
 .modal__backdrop {
     position: absolute;
     inset: 0;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .modal__window {
@@ -806,11 +805,39 @@ a, .btn, input, textarea { outline-offset: 2px; }
     border: none;
     font-size: var(--font-size-xl);
     cursor: pointer;
-    color: var(--color-text);
+    color: var(--color-text); 
+}
+
+ .sr-only { 
+    position: absolute; 
+    width: 1px; 
+    height: 1px; 
+    padding: 0; 
+    margin: -1px; 
+    overflow: hidden; 
+    clip: rect(0, 0, 0, 0); 
+    white-space: nowrap; 
+    border: 0; 
+} 
+
+[inert] {
+    pointer-events: none;
+    cursor: default;
+}
+
+[inert],
+[inert] * {
+    user-select: none;
 }
 
 .modal__close:hover {
     color: var(--color-accent);
+}
+
+
+.modal__close:focus {
+    outline: none; 
+    box-shadow: 0 0 0 3px #25ebcd;   
 }
 
 .modal__content {
@@ -842,8 +869,27 @@ a, .btn, input, textarea { outline-offset: 2px; }
     box-shadow: var(--shadow-dark);
 }
 
-/* ====================== ФОРМА ============================= */
+@media (prefers-contrast: more) {
+    .btn, .nav__link, .form-input {
+        border: 2px solid currentColor;
+    }
+}
 
+.form-input.error,
+.form-textarea.error {
+    border-color: var(--color-red);
+    box-shadow: 0 0 0 2px rgba(217, 48, 37, 0.2);
+}
+
+/* Состояние для скринридера */
+.form-input[aria-invalid="true"],
+.form-textarea[aria-invalid="true"] {
+    border-color: var(--color-red);
+}
+/* ====================== ФОРМА ============================= */
+.required-asterisk {
+    color: #d93025;
+}
 .form-group {
     margin-bottom: var(--space-md);
 }

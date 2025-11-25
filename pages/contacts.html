@@ -33,62 +33,103 @@
                         <a class="nav__link" href="diary.html">Дневник</a>
                     </li> 
                     <li class="nav__item nav__item--active">
-                        <a class="nav__link" href="contacts.html">Контакты</a>
+                        <a class="nav__link" href="contacts.html" aria-current="page">Контакты</a>
                     </li> 
                 </ul> 
             </nav> 
             <main id="main" class="content">
-                <section class="contact-section">
-                    <h2 class="contact-section__title">Свяжитесь со мной</h2>
+                <section class="contact-section" aria-labelledby="contact-title">
+                    <h2 id="contact-title" class="contact-section__title">Свяжитесь со мной</h2>
                     
                     <form id="contactForm" class="contact-form" novalidate>
                         <div class="form-group">
-                            <label for="name" class="form-label">Имя *</label>
+                            <label for="name" class="form-label">
+                                Имя <span class="required-asterisk" aria-hidden="true">*</span>
+                                <span class="visually-hidden">обязательное поле</span>
+                            </label>
                             <input id="name" name="name" type="text" class="form-input" 
-                                   required minlength="2" autocomplete="given-name" aria-describedby="name-hint nameError" >
+                                required minlength="2" autocomplete="given-name" aria-describedby="name-hint nameError" 
+                                aria-required="true">
                             <small id="name-hint" class="visually-hidden">Ваше полное имя</small>
                             <span class="error-message" id="nameError" role="alert"></span>
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="form-label">Email *</label>
+                            <label for="email" class="form-label">
+                                Email <span class="required-asterisk" aria-hidden="true">*</span>
+                                <span class="visually-hidden">обязательное поле</span>
+                            </label>
                             <input id="email" name="email" type="email" class="form-input" 
-                                   required autocomplete="email" aria-describedby="email-hint emailError" >
+                                required autocomplete="email" aria-describedby="email-hint emailError" 
+                                aria-required="true">
                             <small id="email-hint" class="visually-hidden">Мы пришлём ответ на этот адрес</small>
                             <span class="error-message" id="emailError" role="alert"></span>
                         </div>
 
                         <div class="form-group">
-                            <label for="message" class="form-label">Сообщение *</label>
+                            <label for="message" class="form-label">
+                                Сообщение <span class="required-asterisk" aria-hidden="true">*</span>
+                                <span class="visually-hidden">обязательное поле</span>
+                            </label>
                             <textarea id="message" name="message" rows="4" 
-                                      class="form-textarea" required aria-describedby="message-hint messageError"></textarea>
+                                    class="form-textarea" required aria-describedby="message-hint messageError"
+                                    aria-required="true"></textarea>
                             <small id="message-hint" class="visually-hidden">Ваше сообщение</small>
-                            <span class="error-message" id="messageError"></span>
+                            <span class="error-message" id="messageError" role="alert"></span>
                         </div>
 
                         <button type="submit" class="btn contact-form__submit">Отправить</button>
                     </form>
 
-                    <div id="successMessage" class="success-message" hidden>
+                    <div id="successMessage" 
+                        class="success-message" 
+                        role="status"
+                        aria-live="polite"
+                        aria-atomic="true"
+                        hidden>
                         Сообщение успешно отправлено!
                     </div>
                 </section>
                 
                 <section class="contacts contacts-area"> 
                     <h2 class="contacts__title">Контакты:</h2>
-                    <div class="contacts__list"> 
-                        <article class="contact-item">
-                            <img src="../images/icons/email.png" class="contact-item_icon" alt="Иконка email">
-                            <p class="contact-item__value">sergeevnau18@gmail.com</p>
-                        </article> 
-                        <article class="contact-item">
-                            <img src="../images/icons/git.png" class="contact-item_icon" alt="Иконка GitHub">
-                            <p class="contact-item__value">GitHub: https://github.com/aka-belka/ </p>
-                        </article> 
-                        <article class="contact-item">
-                            <img src="../images/icons/location.png" class="contact-item_icon" alt="Иконка локации">
-                            <p class="contact-item__value"> Москва, Россия</p>
-                        </article>
+                    <div class="contacts__list" role="list"> 
+                        <div class="contact-item" role="listitem">
+                            <img src="../images/icons/email@1.png" 
+                                srcset="../images/icons/email@1.png 1x,
+                                        ../images/icons/email@2x.png 2x"
+                                class="contact-item_icon" 
+                                alt="Иконка email" 
+                                loading="lazy">
+                            <p class="contact-item__value">
+                                <span class="visually-hidden">Email: </span>
+                                sergeevnau18@gmail.com
+                            </p>
+                        </div> 
+                        <div class="contact-item" role="listitem">
+                            <img src="../images/icons/git@1.png" 
+                                srcset="../images/icons/git@1.png 1x,
+                                        ../images/icons/git@2x.png 2x"
+                                class="contact-item_icon" 
+                                alt="Иконка GitHub" 
+                                loading="lazy">
+                            <p class="contact-item__value">
+                                <span class="visually-hidden">Ссылка на GitHub: </span>
+                                GitHub: https://github.com/aka-belka/ 
+                            </p>
+                        </div> 
+                        <div class="contact-item" role="listitem">
+                            <img src="../images/icons/location@1.png" 
+                                srcset="../images/icons/location@1.png 1x,
+                                        ../images/icons/location@2x.png 2x"
+                                class="contact-item_icon" 
+                                alt="Иконка локации" 
+                                loading="lazy">
+                            <p class="contact-item__value"> 
+                                <span class="visually-hidden">Локация: </span>
+                                Москва, Россия
+                            </p>
+                        </div>
                     </div>
                 </section>
             </main> 

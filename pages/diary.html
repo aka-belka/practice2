@@ -29,7 +29,7 @@
                         <a class="nav__link" href="projects.html">Проекты</a>
                     </li>  
                     <li class="nav__item nav__item--active">
-                        <a class="nav__link" href="diary.html">Дневник</a>
+                        <a class="nav__link" href="diary.html" aria-current="page">Дневник</a>
                     </li> 
                     <li class="nav__item">
                         <a class="nav__link" href="contacts.html">Контакты</a>
@@ -39,80 +39,108 @@
             <main id="main" class="content">
                 <section class="academ-progress progress-area"> 
                     <h2 class="academ-progress__title">Мой учебный прогресс</h2>
-                    <div class="academ-progress__list"> 
-                        <div class="academ-progress-row">
-                            <p class="academ-progress-item">28 окт - Работа с CSS</p> 
-                        </div>
-                        <div class="academ-progress-row">
-                            <p class="academ-progress-item">23 окт - Верстка макета сайта</p> 
-                            <img src="../images/icons/checkmark.png" 
-                                srcset="../images/icons/checkmark.png"
+                    <ul class="academ-progress__list" role="list"> 
+                        <li class="academ-progress-row">
+                            <p class="academ-progress-item">28 окт - Работа с CSS
+                                <span class="status-pending visually-hidden">В процессе</span>
+                            </p> 
+                        </li>
+                        <li class="academ-progress-row">
+                            <p class="academ-progress-item">
+                                <span class="visually-hidden">Выполнено: </span>
+                                23 окт - Верстка макета сайта</p> 
+                            <img src="../images/icons/checkmark@1.png" 
+                                srcset="../images/icons/checkmark@1.png 1x,
+                                        ../images/icons/checkmark@2x.png 2x"
                                 sizes="20px"
-                                width="20" height="20" 
                                 loading="lazy"
-                                alt="Выполнено"
+                                alt=""
+                                aria-hidden="true"
                                 class="contact-item_icon">
-                        </div>
-                        <div class="academ-progress-row">
-                            <p class="academ-progress-item">21 окт - Bootstrap основы</p> 
-                            <img src="../images/icons/checkmark.png" 
-                                srcset="../images/icons/checkmark.png"
+                        </li>
+                        <li class="academ-progress-row">
+                            <p class="academ-progress-item">
+                                <span class="visually-hidden">Выполнено: </span>
+                                21 окт - Bootstrap основы</p> 
+                            <img src="../images/icons/checkmark@1.png" 
+                                srcset="../images/icons/checkmark@1.png 1x,
+                                        ../images/icons/checkmark@2x.png 2x"
                                 sizes="20px"
-                                width="20" height="20" 
                                 loading="lazy"
-                                alt="Выполнено"
+                                alt=""
+                                aria-hidden="true"
                                 class="contact-item_icon">
-                        </div>
-                        <div class="academ-progress-row">
-                            <p class="academ-progress-item">15 окт - Работа с дизайном</p> 
-                        </div>
-                        <div class="academ-progress-row">
-                            <p class="academ-progress-item">8 окт - JS основы</p> 
-                            <img src="../images/icons/checkmark.png" 
-                                srcset="../images/icons/checkmark.png"
+                        </li>
+                        <li class="academ-progress-row">
+                            <p class="academ-progress-item">15 окт - Работа с дизайном
+                                <span class="status-pending visually-hidden">В процессе</span>
+                            </p> 
+                        </li>
+                        <li class="academ-progress-row">
+                            <p class="academ-progress-item">
+                                <span class="visually-hidden">Выполнено: </span>
+                                8 окт - JS основы</p> 
+                            <img src="../images/icons/checkmark@1.png" 
+                                srcset="../images/icons/checkmark@1.png 1x,
+                                        ../images/icons/checkmark@2x.png 2x"
                                 sizes="20px"
-                                width="20" height="20" 
                                 loading="lazy"
-                                alt="Выполнено"
+                                alt=""
+                                aria-hidden="true"
                                 class="contact-item_icon">
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
                 </section>
 
                 <section class="courses"> 
                     <h2 class="courses__title">Текущие курсы</h2> 
-                    <div class="courses__list"> 
-                        <div class="course-item">
+                    <div class="courses__list" role="list"> 
+                        <div class="course-item" role="listitem">
                             <div class="course-item__header">
                                 <span>Веб-разработка</span>
                                 <span class="course-item__percent">90%</span>
                             </div>
-                            <div class="course-item__progress">
+                            <div class="course-item__progress"
+                                role="progressbar" 
+                                aria-valuenow="90" 
+                                aria-valuemin="0" 
+                                aria-valuemax="100"
+                                aria-label="Веб-разработка: 90% завершено">
                                 <div class="course-item__progress-bar HTML_CSS"></div>
                             </div>
                         </div>
                         
-                        <div class="course-item">
+                        <div class="course-item" role="listitem">
                             <div class="course-item__header">
                                 <span>JavaScript</span>
                                 <span class="course-item__percent">70%</span>
                             </div>
-                            <div class="course-item__progress">
+                            <div class="course-item__progress"
+                                role="progressbar" 
+                                aria-valuenow="70" 
+                                aria-valuemin="0" 
+                                aria-valuemax="100"
+                                aria-label="JavaScript: 70% завершено">
                                 <div class="course-item__progress-bar JS"></div>
                             </div>
                         </div> 
                         
-                        <div class="course-item">
+                        <div class="course-item" role="listitem">
                             <div class="course-item__header">
                                 <span>C#</span>
                                 <span class="course-item__percent">50%</span>
                             </div>
-                            <div class="course-item__progress">
+                            <div class="course-item__progress"
+                                role="progressbar" 
+                                aria-valuenow="50" 
+                                aria-valuemin="0" 
+                                aria-valuemax="100"
+                                aria-label="C#: 50% завершено">
                                 <div class="course-item__progress-bar CS"></div>
                             </div>
                         </div> 
                     </div> 
-                    <button type="submit" class="btn courses__submit">Добавить запись</button> 
+                    <button type="button" class="btn courses__submit">Добавить запись</button> 
                 </section> 
             </main> 
             <footer class="footer">

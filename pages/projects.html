@@ -27,7 +27,7 @@
                         <a class="nav__link" href="../index.html">Главная</a>
                     </li> 
                     <li class="nav__item nav__item--active">
-                        <a class="nav__link" href="projects.html">Проекты</a>
+                        <a class="nav__link" href="projects.html" aria-current="page">Проекты</a>
                     </li>  
                     <li class="nav__item">
                         <a class="nav__link" href="diary.html">Дневник</a>
@@ -41,15 +41,22 @@
                 <section class="projects"> 
                     <h2 class="projects__title">Мои проекты</h2>
                     <div class="projects-filters">
-                        <button class="filter-btn active" data-filter="all">Все</button>
-                        <button class="filter-btn" data-filter="html">HTML/CSS</button>
-                        <button class="filter-btn" data-filter="js">JavaScript</button>
-                        <button class="filter-btn" data-filter="python">Python</button>
-                        <button class="filter-btn" data-filter="cpp">C++</button>
-                        <button class="filter-btn" data-filter="bootstrap">Bootstrap</button>
+                        <button class="filter-btn active" data-filter="all"  aria-pressed="true">Все</button>
+                        <button class="filter-btn" data-filter="html" aria-pressed="false">HTML/CSS</button>
+                        <button class="filter-btn" data-filter="js" aria-pressed="false">JavaScript</button>
+                        <button class="filter-btn" data-filter="python" aria-pressed="false">Python</button>
+                        <button class="filter-btn" data-filter="cpp" aria-pressed="false">C++</button>
+                        <button class="filter-btn" data-filter="bootstrap" aria-pressed="false">Bootstrap</button>
                     </div>
                     <div class="projects__list">
-                        <article class="project-item" data-categories="html,bootstrap" onclick="openModal('modal-project1')">
+                        <article class="project-item" 
+                                data-categories="html,bootstrap"
+                                tabindex="0"
+                                role="button"
+                                aria-haspopup="dialog"
+                                aria-controls="modal-project1"
+                                onkeydown="handleCardKeydown(event, 'modal-project1')"
+                                onclick="openModal('modal-project1')">
                             <picture>
                                 <source type="image/avif" 
                                         srcset="../images/project1-280.avif 280w,
@@ -80,7 +87,14 @@
                             </div>
                         </article>
 
-                        <article class="project-item" data-categories="python,sql,html,css" onclick="openModal('modal-project2')">
+                        <article class="project-item"
+                                data-categories="python,sql,html,css"
+                                tabindex="0"
+                                role="button"
+                                aria-haspopup="dialog"
+                                aria-controls="modal-project2"
+                                onkeydown="handleCardKeydown(event, 'modal-project2')"
+                                onclick="openModal('modal-project2')">
                             <picture>
                                 <source type="image/avif" 
                                         srcset="../images/project2-280.avif 280w,
@@ -112,7 +126,14 @@
                             </div>
                         </article>
 
-                        <article class="project-item" data-categories="cpp"  onclick="openModal('modal-project3')">
+                        <article class="project-item" 
+                                data-categories="cpp"
+                                role="button"
+                                tabindex="0"
+                                aria-haspopup="dialog"
+                                aria-controls="modal-project3"
+                                onkeydown="handleCardKeydown(event, 'modal-project3')"
+                                onclick="openModal('modal-project3')">
                             <picture>
                                 <source type="image/avif" 
                                         srcset="../images/project3-280.avif 280w,
@@ -142,7 +163,14 @@
                             </div>
                         </article>
 
-                        <article class="project-item" data-categories="python,js,html,css" onclick="openModal('modal-project4')">
+                        <article class="project-item" 
+                                data-categories="python,js,html,css"
+                                role="button"
+                                tabindex="0"
+                                aria-haspopup="dialog"
+                                aria-controls="modal-project4"
+                                onkeydown="handleCardKeydown(event, 'modal-project4')"
+                                onclick="openModal('modal-project4')">
                             <picture>
                                 <source type="image/avif" 
                                         srcset="../images/project4-280.avif 280w,
@@ -168,7 +196,7 @@
                             <p class="project-item__desc">Веб-платформа для ФК и болельщиков футбола со свежими новостями, онлайн-магазином и возможностью смотрть матчи в режиме онлайн.</p> 
                                 <div class="project-tags">
                                 <span class="project-tags__badge">Python</span>
-                                <span class="project-tags__badge">JavaScript</span>
+                                <span class="project-tags__badge">JS</span>
                                 <span class="project-tags__badge">HTML</span>
                                 <span class="project-tags__badge">CSS</span>
                             </div>
@@ -180,12 +208,22 @@
                 <p class="footer__text">© 2025 Проекты</p>
             </footer>
         </div> 
-        <div id="modal-project1" class="modal" hidden>
+        <div id="modal-project1" 
+            class="modal" 
+            hidden 
+            role="dialog"
+            aria-modal="true"       
+            aria-labelledby="modal-title-project1"  
+            aria-describedby="modal-desc-project1"
+            tabindex="-1">
             <div class="modal__backdrop"></div>
             <div class="modal__window">
-                <button class="modal__close" onclick="closeModal('modal-project1')">×</button>
-                <h2>Личный сайт</h2>
-                <div class="modal__content">
+                <button class="modal__close" aria-label="Закрыть диалоговое окно" onclick="closeModal('modal-project1')" autofocus>
+                    <span class="icon" aria-hidden="true">x</span> 
+                    <span class="sr-only">Закрыть диалоговое окно</span> 
+                </button>
+                <h2 id="modal-title-project1">Личный сайт</h2>
+                <div class="modal__content" id="modal-desc-project1">
                     <img src="../images/project1.png" 
                         alt="Главный скриншот личного сайта" 
                         width="600" height="469"
@@ -214,12 +252,22 @@
                 </div>
             </div>
         </div>
-        <div id="modal-project2" class="modal" hidden>
+        <div id="modal-project2" 
+            class="modal" 
+            role="dialog"
+            aria-modal="true"       
+            aria-labelledby="modal-title-project2"  
+            aria-describedby="modal-desc-project2"
+            tabindex="-1"
+            hidden>
             <div class="modal__backdrop"></div>
             <div class="modal__window">
-                <button class="modal__close" onclick="closeModal('modal-project2')">×</button>
-                <h2>My Data Base</h2>
-                <div class="modal__content">
+                <button class="modal__close" aria-label="Закрыть диалоговое окно" onclick="closeModal('modal-project2')">
+                    <span class="icon" aria-hidden="true">x</span> 
+                    <span class="sr-only">Закрыть диалоговое окно</span> 
+                </button>
+                <h2 id="modal-title-project2">My Data Base</h2>
+                <div id="modal-desc-project2" class="modal__content">
                     <img src="../images/project2.png" 
                         alt="My Data Base 1" 
                         width="600" height="469"
@@ -249,12 +297,22 @@
                 </div>
             </div>
         </div>
-        <div id="modal-project3" class="modal" hidden>
+        <div id="modal-project3" 
+            class="modal" 
+            role="dialog"
+            aria-modal="true"       
+            aria-labelledby="modal-title-project3"  
+            aria-describedby="modal-desc-project3"
+            tabindex="-1"
+            hidden>
             <div class="modal__backdrop"></div>
             <div class="modal__window">
-                <button class="modal__close" onclick="closeModal('modal-project3')">×</button>
-                <h2>Игра Косынка</h2>
-                <div class="modal__content">
+                <button class="modal__close" aria-label="Закрыть диалоговое окно" onclick="closeModal('modal-project3')">
+                    <span class="icon" aria-hidden="true">x</span> 
+                    <span class="sr-only">Закрыть диалоговое окно</span> 
+                </button>
+                <h2 id="modal-title-project3">Игра Косынка</h2>
+                <div id="modal-desc-project3" class="modal__content">
                     <img src="../images/project3.png" 
                         alt="Игра Косынка 1" 
                         width="600" height="469"
@@ -282,12 +340,22 @@
                 </div>
             </div>
         </div>
-        <div id="modal-project4" class="modal" hidden>
+        <div id="modal-project4" 
+            class="modal" 
+            role="dialog"
+            aria-modal="true"       
+            aria-labelledby="modal-title-project4"  
+            aria-describedby="modal-desc-project4"
+            tabindex="-1"
+            hidden>
             <div class="modal__backdrop"></div>
             <div class="modal__window">
-                <button class="modal__close" onclick="closeModal('modal-project4')">×</button>
-                <h2>Сайт футбольного клуба "Кокос Group"</h2>
-                <div class="modal__content">
+                <button class="modal__close" aria-label="Закрыть диалоговое окно" onclick="closeModal('modal-project4')">
+                    <span class="icon" aria-hidden="true">x</span> 
+                    <span class="sr-only">Закрыть диалоговое окно</span> 
+                </button>
+                <h2 id="modal-title-project4">Сайт футбольного клуба "Кокос Group"</h2>
+                <div class="modal__content" id="modal-desc-project4">
                     <img src="../images/project4.png" 
                         alt="Сайт футбольного клуба Кокос Group 1" 
                         width="600" height="469"

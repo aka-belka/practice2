@@ -1,15 +1,113 @@
 /* ======================================================МОДАЛЬНОЕ ОКНО ДЛЯ ПРОЕКТОВ================================================== */
+if (!HTMLElement.prototype.hasOwnProperty('inert')) {
+    Object.defineProperty(HTMLElement.prototype, 'inert', {
+        get: function() {
+            return this.getAttribute('inert') !== null;
+        },
+        set: function(value) {
+            if (value) {
+                this.setAttribute('inert', '');
+                this.setAttribute('aria-hidden', 'true');
+                this.style.pointerEvents = 'none';
+                this.style.userSelect = 'none';
+            } else {
+                this.removeAttribute('inert');
+                this.removeAttribute('aria-hidden');
+                this.style.pointerEvents = '';
+                this.style.userSelect = '';
+            }
+        }
+    });
+}
 
+let previousActiveElement;
+let currentOpenModal = null;
+
+function handleCardKeydown(event, modalId) {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openModal(modalId);
+    }
+}
 function openModal(modalId) {
     const modal = document.getElementById(modalId);
+    previousActiveElement = document.activeElement;
+    currentOpenModal = modal;
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
+
+    const mainContent = document.querySelector('main');
+    const header = document.querySelector('header');
+    const footer = document.querySelector('footer');
+
+    if (mainContent) mainContent.inert = true;
+    if (header) header.inert = true;
+    if (footer) footer.inert = true;
+    
+    if (mainContent) mainContent.setAttribute('aria-hidden', 'true');
+    if (header) header.setAttribute('aria-hidden', 'true');
+    if (footer) footer.setAttribute('aria-hidden', 'true');
+
+    modal.focus();
+    
+    modal.addEventListener('keydown', trapFocus);
+    document.addEventListener('keydown', handleGlobalEscape);;
 }
 
 function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     modal.hidden = true;
-    document.body.style.overflow = ''; 
+    document.body.style.overflow = '';
+    currentOpenModal = null;
+
+    const mainContent = document.querySelector('main');
+    const header = document.querySelector('header');
+    const footer = document.querySelector('footer');
+    
+    if (mainContent) {
+        mainContent.inert = false;
+        mainContent.removeAttribute('aria-hidden');
+    }
+    if (header) {
+        header.inert = false;
+        header.removeAttribute('aria-hidden');
+    }
+    if (footer) {
+        footer.inert = false;
+        footer.removeAttribute('aria-hidden');
+    }
+    if (previousActiveElement) {
+        previousActiveElement.focus();
+    }
+    
+    modal.removeEventListener('keydown', trapFocus);
+    
+    document.removeEventListener('keydown', handleGlobalEscape);
+}
+
+function trapFocus(event) {
+    if (event.key !== 'Tab') return;
+    
+    const modal = event.currentTarget;
+    const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    const focusableElements = modal.querySelectorAll(focusableSelectors);
+    
+    if (focusableElements.length === 0) return;
+    
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+    
+    if (event.shiftKey) {
+        if (document.activeElement === firstElement) {
+            event.preventDefault();
+            lastElement.focus();
+        }
+    } else {
+        if (document.activeElement === lastElement) {
+            event.preventDefault();
+            firstElement.focus();
+        }
+    }
 }
 
 document.addEventListener('click', function(event) {
@@ -20,15 +118,11 @@ document.addEventListener('click', function(event) {
     }
 });
 
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        const openModal = document.querySelector('.modal:not([hidden])');
-        if (openModal) {
-            openModal.hidden = true;
-            document.body.style.overflow = '';
-        }
+function handleGlobalEscape(event) {
+    if (event.key === 'Escape' && currentOpenModal) {
+        closeModal(currentOpenModal.id);
     }
-});
+}
 
 
 
@@ -36,13 +130,20 @@ document.addEventListener('keydown', function(event) {
 
 function filterProjects(category) {
     const projects = document.querySelectorAll('.project-item');
+    if (projects.length === 0) {
+        console.log('No projects found on this page');
+        return;
+    }
     const filterButtons = document.querySelectorAll('.filter-btn');
+    if (filterButtons.length === 0) {
+        console.log('No filter buttons found on this page');
+        return;
+    }
     
     filterButtons.forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.filter === category) {
-            btn.classList.add('active');
-        }
+        const isActive = btn.dataset.filter === category;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive.toString());
     });
     
     projects.forEach(project => {
@@ -61,6 +162,11 @@ function filterProjects(category) {
 
 document.addEventListener('DOMContentLoaded', function() {
     const filterButtons = document.querySelectorAll('.filter-btn');
+
+    if (filterButtons.length === 0) {
+        console.log('No filter buttons to initialize');
+        return;
+    }
     
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -68,7 +174,10 @@ document.addEventListener('DOMContentLoaded', function() {
             filterProjects(filter);
         });
     });
-    filterProjects('all');
+    const projects = document.querySelectorAll('.project-item');
+    if (projects.length > 0) {
+        filterProjects('all');
+    }
 });
 
 
@@ -98,6 +207,7 @@ function validateField(e) {
 
 function showError(field, errorElement) {
     field.classList.add('error');
+    field.setAttribute('aria-invalid', 'true');
     
     if (field.validity.valueMissing) {
         errorElement.textContent = 'Это поле обязательно для заполнения';
@@ -108,6 +218,7 @@ function showError(field, errorElement) {
     } else if (field.validity.tooLong) {
         errorElement.textContent = `Максимальная длина: ${field.maxLength} символов`;
     }
+    
 }
 
 function clearError(e) {
@@ -117,6 +228,12 @@ function clearError(e) {
     field.classList.remove('error');
     errorElement.textContent = '';
 }
+
+form.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !successMessage.hidden) {
+        successMessage.hidden = true;
+    }
+});
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();

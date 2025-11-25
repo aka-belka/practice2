@@ -650,7 +650,9 @@ a, .btn, input, textarea { outline-offset: 2px; }
 }
 
 .courses__submit{
-    width: 15%;
+    min-width: fit-content;
+    width: auto;
+    min-height: var(--height-md);
     padding: var(--space-md);
     background: var(--color-accent);
     color: var(--color-white);
@@ -961,7 +963,7 @@ a, .btn, input, textarea { outline-offset: 2px; }
     } 
 
     .btn{ 
-        width: 80%; 
+        width: auto;
         text-align: center;
     }
     .profile__card { 

@@ -1,5 +1,7 @@
 /* ===============================================CSS переменные =============================================== */ 
 :root { 
+    color-scheme: light dark;
+
     --color-main: #2C3531; 
     --color-accent: #116466; 
     --color-light: #FFCB9A; 
@@ -41,17 +43,17 @@
 
     --space-xxs: 2px; 
     --space-xs: 5px; 
-    --space-sm: 10px; 
-    --space-md: 20px; 
-    --space-lg: 30px; 
+    --space-sm: clamp(0.5rem, 0.4rem + 0.5vw, 1rem);   
+    --space-md: clamp(1rem, 0.8rem + 1vw, 1.5rem);  
+    --space-lg: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
 
-    --font-size-xs: 0.5rem;
-    --font-size-s: 0.8rem;
-    --font-size-sm: 0.9rem;
-    --font-size-normal: 1rem;
-    --font-size-md: 1.1rem;
-    --font-size-xl: 1.5rem;
-    --font-size-xxl: 2rem;
+    --font-size-xs: clamp(0.45rem, 0.4rem + 0.25vw, 0.6rem); 
+    --font-size-s: clamp(0.7rem, 0.65rem + 0.25vw, 0.85rem);  
+    --font-size-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.95rem); 
+    --font-size-normal: clamp(0.9rem, 0.85rem + 0.25vw, 1.05rem); 
+    --font-size-md: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);    
+    --font-size-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.75rem); 
+    --font-size-xxl: clamp(1.5rem, 1.25rem + 1.25vw, 2.5rem); 
     
     --line-height-normal: 1.5;
     
@@ -81,8 +83,23 @@
     padding: 0; 
     box-sizing: border-box; 
 } 
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+html, body { height: 100%; } 
+
  body { 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    font-family:  16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; 
     background-color: var(--color-bg); 
     line-height:  var(--line-height-normal);
     color: var(--color-text); 
@@ -90,12 +107,64 @@
                 color var(--transition-normal);
 } 
 
+.skip-link{ 
+    position: absolute; 
+    inset-inline-start: 1rem; 
+    inset-block-start: -100%; 
+    z-index: 10000; 
+    padding: .5rem .75rem; 
+    background: var(--color-main);
+    color: #fff; 
+    border-radius: .5rem; 
+    text-decoration: none; 
+} 
+
+.skip-link:focus, 
+.skip-link:focus-visible { inset-block-start: 1rem; } 
+:focus-visible { outline: 3px solid #25ebcd; outline-offset: 2px; } 
+a, .btn, input, textarea { outline-offset: 2px; }
+
+@media (pointer: coarse){ 
+    a, .btn, .nav__link { min-height: 44px; padding: .75rem 1rem; } 
+} 
+
+@media (prefers-contrast: more) {
+    .btn, .filter-btn,.projects-filters{ 
+        box-shadow: inset 0 0 0 2px #fff; 
+    } 
+}
+
+@media (prefers-reduced-motion: reduce) { 
+    * { 
+        animation: none !important; 
+        transition: none !important; 
+    } 
+}
+
+ 
+.section, .main { 
+    padding-inline: clamp(1rem, calc(.5rem + 1vw), 2rem); 
+} 
+.btn{
+    padding-block: max(.5rem, calc((44px - 1em)/2));
+}
+
+.modal__content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-md);
+}
 /* =============================================== КОНТЕЙНЕР СТРАНИЦЫ ======================================== */
  .page{  
     margin: 0 auto; 
     background:var(--color-page); ; 
     min-height: 100vh; 
-    transition: background-color var(--transition-normal);
+    min-height: 100svh;  
+    min-height: 100dvh;
+    transition: background-color var(--transition-normal);    
+    display: flex; 
+    flex-direction: column;  
 } 
 .content { 
     padding: var(--space-lg); 
@@ -117,11 +186,24 @@
     width: var(--photo-size-sm); 
     height: var(--photo-size-sm); 
     border-radius: var(--radius-lg); 
+    object-fit: cover; 
 }
+
 /* ======================================================= НАВИГАЦИЯ ================================================= */
  .nav { 
     background: var(--color-main); 
     transition: background-color var(--transition-normal);
+    
+    position: sticky; 
+    top: 0;      
+    padding-block-start: calc(.75rem + env(safe-area-inset-top)); 
+    padding-block-end: .75rem; 
+    padding-inline-start: calc(var(--space-md, 1rem) + env(safe-area-inset
+    left)); 
+    padding-inline-end:   calc(var(--space-md, 1rem) + env(safe-area-inset
+    right)); 
+    z-index: 100; 
+    isolation: isolate; 
 } 
 .nav__list { 
     list-style: none; 
@@ -171,6 +253,7 @@
     padding: var(--space-md); 
     margin-top: var(--space-lg);  
     transition: var(--transition-normal);
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
 } 
 
 /* ====================================================== ГЛАВНАЯ СТРАНИЦА =============================================*/
@@ -188,24 +271,31 @@
     border-radius: var(--radius-sm); 
     box-shadow: var(--shadow); 
 } 
-.profile__photo { 
-    width: var(--photo-size-lg); 
-    height: var(--photo-size-lg); 
-    border-radius: var(--radius-xl); 
-    
-    border: 3px solid var(--color-secondary);
-} 
+
+.hero__photo{ 
+    aspect-ratio: 1 / 1;
+    inline-size: 200px;  
+    block-size: auto; 
+    border-radius: 50%; 
+    object-fit: cover;  
+    border: 3px solid var(--color-secondary); 
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
 .profile__text { 
     font-size:  var(--font-size-xl);
     color: var(--color-main); 
     margin-bottom: var(--space-sm);
 } 
 .project__photo { 
-    width:var(--photo-with);
-    height:var(--photo-height);
+    aspect-ratio: 320 / 250;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    max-width: 320px;
 } 
 .download__submit {
     padding: var(--space-md);
+    padding-block: max(.5rem, calc((44px - 1em)/2)); 
     background: var(--color-accent);
     color: var(--color-white);
     border: none;
@@ -325,6 +415,7 @@
     border-radius: var(--radius-sm); 
     box-shadow: var(--shadow); 
     border-left: var(--border-lg) solid var(--color-accent);
+    margin-block: var(--space-2xl, 3rem); 
 } 
 
 .projects__title { 
@@ -333,11 +424,11 @@
     margin-bottom: var(--space-sm); 
 } 
 .projects__list{
-    display: grid;
-    margin-top: var(--space-lg);
-    grid-template-columns: repeat(auto-fit, minmax(280px, 320px)); 
+     margin-top: var(--space-lg);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg, 1.5rem);
     justify-content: center;
-    gap: var(--space-md);
     
 }
 
@@ -352,8 +443,9 @@
     overflow: hidden;
     border: var(--border-m) solid var(--color-accent);
     max-width: 325px;
-    margin-left: auto; 
-    margin-right: auto;
+    width: 100%;
+    min-width: 0;
+     flex: 0 1 325px; 
 }
 
 .project-item:hover { 
@@ -375,6 +467,7 @@
     color: var(--color-text); 
     margin: var(--space-sm);
     font-weight: bold; 
+    overflow-wrap: anywhere;
 }
 
 .project-item__desc{
@@ -382,6 +475,7 @@
     font-size: var(--font-size-sm);
     line-height: var(--line-height-normal);
     margin: var(--space-sm);
+    overflow-wrap: anywhere;
 }
 
 .project-tags__badge {
@@ -395,6 +489,38 @@
     margin-bottom: var(--font-size-xs);
 }
 
+@supports (container-type: inline-size){ 
+    .projects{ 
+        container-type: inline-size;               
+        container-name: projects;              
+    } 
+    .progress-area, .courses {
+        container-type: inline-size;
+    }
+    @container projects (min-width: 640px){ 
+        .projects__list{ grid-template-columns: repeat(2, 1fr); } 
+    } 
+    @container projects (min-width: 960px){ 
+        .projects__list{ grid-template-columns: repeat(3, 1fr); } 
+    } 
+     .contacts-area {
+        container-type: inline-size;
+        container-name: contacts;
+    }
+    @container contacts (min-width: 640px) {
+        .contacts__list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-md);
+        }
+    }
+    @container contacts (min-width: 960px) {
+        .contacts__list {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+} 
+
 /* ====================== ФИЛЬТРЫ ============================= */
 .projects-filters {
     display: flex;
@@ -406,6 +532,7 @@
 
 .filter-btn {
     padding: var(--space-sm) var(--space-md);
+    padding-block: max(.5rem, calc((44px - 1em)/2));
     background: var(--color-light);
     border: none;
     border-radius: var(--radius-lg);
@@ -440,10 +567,9 @@
     text-align: center; 
 }
 .academ-progress__list{
-    display: flex; 
-    gap: var(--space-md); 
-    flex-wrap: wrap; 
-    flex-direction: column;
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-md);
 
     background: var(--color-white); 
     padding: var(--space-lg); 
@@ -486,6 +612,10 @@
     margin-bottom: var(--space-md); 
 }
 .courses__list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-lg);
+
     width: 48%;
     max-width: 800px;
 
@@ -535,6 +665,8 @@
     box-shadow: var(--shadow);
     margin: 0 auto; 
     display: block;
+    align-items: center;
+    justify-content: center;
 }
 
 .courses__submit:hover {

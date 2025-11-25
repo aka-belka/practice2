@@ -1,18 +1,26 @@
  <!DOCTYPE html>
- <html lamg = "ru"> 
+ <html lang = "ru"> 
     <head> 
         <meta charset="UTF-8"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"> 
         <title>Дневник</title>
         <link rel="stylesheet" href="../styles/styles.css"> 
     </head> 
     <body> 
+        <a class="skip-link" href="#main">Перейти к основному содержимому</a> 
         <div class="page"> 
             <header class="header">
-                <img  class="header__photo" src="../images/mirea.jpg" alt="Лого"> 
+                <img class="header__photo" 
+                    src="../images/mirea-50.jpg" 
+                    srcset="../images/mirea-50.jpg 50w,
+                            ../images/mirea-75.jpg 75w,
+                            ../images/mirea-100.jpg 100w"
+                    sizes="50px"
+                    width="50" height="50" 
+                    alt="Логотип университета"> 
                 <h1 class="header__title">Бельская Валерия Сергеевна</h1>
             </header> 
-            <nav class="nav"> 
+            <nav class="nav" aria-label="Основная навигация"> 
                 <ul class="nav__list"> 
                     <li class="nav__item">
                         <a class="nav__link" href="../index.html">Главная</a>
@@ -28,8 +36,8 @@
                     </li> 
                 </ul> 
             </nav> 
-            <main class="content">
-                <section class="academ-progress"> 
+            <main id="main" class="content">
+                <section class="academ-progress progress-area"> 
                     <h2 class="academ-progress__title">Мой учебный прогресс</h2>
                     <div class="academ-progress__list"> 
                         <div class="academ-progress-row">
@@ -37,18 +45,36 @@
                         </div>
                         <div class="academ-progress-row">
                             <p class="academ-progress-item">23 окт - Верстка макета сайта</p> 
-                            <img src="../images/icons/checkmark.png" class="contact-item_icon" alt="done">
+                            <img src="../images/icons/checkmark.png" 
+                                srcset="../images/icons/checkmark.png"
+                                sizes="20px"
+                                width="20" height="20" 
+                                loading="lazy"
+                                alt="Выполнено"
+                                class="contact-item_icon">
                         </div>
                         <div class="academ-progress-row">
                             <p class="academ-progress-item">21 окт - Bootstrap основы</p> 
-                            <img src="../images/icons/checkmark.png" class="contact-item_icon" alt="done">
+                            <img src="../images/icons/checkmark.png" 
+                                srcset="../images/icons/checkmark.png"
+                                sizes="20px"
+                                width="20" height="20" 
+                                loading="lazy"
+                                alt="Выполнено"
+                                class="contact-item_icon">
                         </div>
                         <div class="academ-progress-row">
                             <p class="academ-progress-item">15 окт - Работа с дизайном</p> 
                         </div>
                         <div class="academ-progress-row">
                             <p class="academ-progress-item">8 окт - JS основы</p> 
-                            <img src="../images/icons/checkmark.png" class="contact-item_icon" alt="done">
+                            <img src="../images/icons/checkmark.png" 
+                                srcset="../images/icons/checkmark.png"
+                                sizes="20px"
+                                width="20" height="20" 
+                                loading="lazy"
+                                alt="Выполнено"
+                                class="contact-item_icon">
                         </div>
                     </div>
                 </section>
@@ -90,7 +116,7 @@
                 </section> 
             </main> 
             <footer class="footer">
-                <p class="footer__text">© 2025 Контакты</p>
+                <p class="footer__text">© 2025 Дневник</p>
             </footer>
         </div>    
     </body>

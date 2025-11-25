@@ -1,18 +1,26 @@
  <!DOCTYPE html>
- <html lamg = "ru"> 
+ <html lang="ru"> 
     <head> 
         <meta charset="UTF-8"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"> 
         <title>Главная</title>
         <link rel="stylesheet" href="styles/styles.css"> 
     </head> 
     <body> 
+        <a class="skip-link" href="#main">Перейти к основному содержимому</a> 
         <div class="page"> 
             <header class="header">
-                <img  class="header__photo" src="images/mirea.jpg" alt="Лого"> 
+                <img class="header__photo" 
+                    src="images/mirea-50.jpg" 
+                    srcset="images/mirea-50.jpg 50w,
+                            images/mirea-75.jpg 75w,
+                            images/mirea-100.jpg 100w"
+                    sizes="50px"
+                    width="50" height="50" 
+                    alt="Логотип университета">
                 <h1 class="header__title">Бельская Валерия Сергеевна</h1>
             </header> 
-            <nav class="nav"> 
+            <nav class="nav" aria-label="Основная навигация"> 
                 <ul class="nav__list"> 
                     <li class="nav__item nav__item--active">
                         <a class="nav__link" href="index.html">Главная</a>
@@ -28,10 +36,33 @@
                     </li> 
                 </ul> 
             </nav> 
-            <main class="content"> 
+            <main id="main" class="content"> 
                 <section class="profile">
                     <div class="profile__card"> 
-                        <img  class="profile__photo" src="images/photo.jpg" alt="Фото автора"> 
+                        <figure class="hero__image">
+                            <picture>
+                                <source type="image/avif" 
+                                        srcset="images/hero-150.avif 150w, 
+                                                images/hero-200.avif 200w, 
+                                                images/hero-300.avif 300w" 
+                                        sizes="200px">
+                                <source type="image/webp" 
+                                        srcset="images/hero-150.webp 150w, 
+                                                images/hero-200.webp 200w, 
+                                                images/hero-300.webp 300w" 
+                                        sizes="200px">
+
+                                <img class="hero__photo" 
+                                    src="images/hero-200.jpg" 
+                                    srcset="images/hero-150.jpg 150w, 
+                                            images/hero-200.jpg 200w, 
+                                            images/hero-300.jpg 300w" 
+                                    sizes="200px" 
+                                    width="200" height="200" 
+                                    alt="Портрет студента" 
+                                    fetchpriority="high">
+                            </picture>
+                        </figure>
                         <div class="profile__info">
                             <p class="profile__text">
                                 Привет! Я студент группы ЭФБО-02-24. Увлекаюсь веб-разработкой.
@@ -96,7 +127,27 @@
                     <h2 class="projects__title">Лучшие проекты</h2>
                     <div class="projects__list ">
                         <article class="project-item">
-                            <img class="project__photo" src="images/project1.png" alt="Фото проекта 1"> 
+                            <picture>
+                                <source type="image/avif" 
+                                        srcset="images/project1-280.avif 280w,
+                                                images/project1-320.avif 320w,
+                                                images/project1-640.avif 640w"
+                                        sizes="(max-width: 768px) 280px, 320px">
+                                <source type="image/webp" 
+                                        srcset="images/project1-280.webp 280w,
+                                                images/project1-320.webp 320w,
+                                                images/project1-640.webp 640w"
+                                        sizes="(max-width: 768px) 280px, 320px">
+                                <img class="project__photo" 
+                                    src="images/project1-320.png" 
+                                    srcset="images/project1-280.png 280w,
+                                            images/project1-320.png 320w,
+                                            images/project1-640.png 640w"
+                                    sizes="(max-width: 768px) 280px, 320px"
+                                    width="320" height="250"
+                                    alt="Фото проекта 1 - Личный сайт"
+                                    loading="lazy">
+                            </picture>
                             <h3 class="project-item__name">Личный сайт</h3> 
                             <p class="project-item__desc">Сайт-портфолио на HTML, CSS и Bootstrap с адаптивным дизайном.</p> 
                             <div class="project-tags">
@@ -107,7 +158,27 @@
                         </article>
 
                         <article class="project-item">
-                            <img class="project__photo" src="images/project2.png" alt="Фото проекта 2"> 
+                        <picture>
+                            <source type="image/avif" 
+                                    srcset="images/project2-280.avif 280w,
+                                            images/project2-320.avif 320w,
+                                            images/project2-640.avif 640w"
+                                    sizes="(max-width: 768px) 280px, 320px">
+                            <source type="image/webp" 
+                                    srcset="images/project2-280.webp 280w,
+                                            images/project2-320.webp 320w,
+                                            images/project2-640.webp 640w"
+                                    sizes="(max-width: 768px) 280px, 320px">
+                            <img class="project__photo" 
+                                src="images/project2-320.png" 
+                                srcset="images/project2-280.png 280w,
+                                        images/project2-320.png 320w,
+                                        images/project2-640.png 640w"
+                                sizes="(max-width: 768px) 280px, 320px"
+                                width="320" height="250"
+                                alt="Фото проекта 2 - My Data Base"
+                                loading="lazy">
+                        </picture>
                             <h3 class="project-item__name">My Data Base</h3> 
                             <p class="project-item__desc">Настольное приложение с графическим интерфейсом, взаимодействующее с БД PostgreSQL, фиксирующее эксперименты по внедрению ИИ в обнаружение DDoS-атак.</p>
                             <div class="project-tags"> 
@@ -119,7 +190,27 @@
                         </article>
 
                         <article class="project-item">
-                            <img class="project__photo" src="images/project3.png" alt="Фото проекта 3"> 
+                            <picture>
+                                <source type="image/avif" 
+                                        srcset="images/project3-280.avif 280w,
+                                                images/project3-320.avif 320w,
+                                                images/project3-640.avif 640w"
+                                        sizes="(max-width: 768px) 280px, 320px">
+                                <source type="image/webp" 
+                                        srcset="images/project3-280.webp 280w,
+                                                images/project3-320.webp 320w,
+                                                images/project3-640.webp 640w"
+                                        sizes="(max-width: 768px) 280px, 320px">
+                                <img class="project__photo" 
+                                    src="images/project3-320.png" 
+                                    srcset="images/project3-280.png 280w,
+                                            images/project3-320.png 320w,
+                                            images/project3-640.png 640w"
+                                    sizes="(max-width: 768px) 280px, 320px"
+                                    width="320" height="250"
+                                    alt="Фото проекта 3 - Игра Косынка"
+                                    loading="lazy">
+                            </picture>
                             <h3 class="project-item__name">Игра "Косынка"</h3> 
                             <p class="project-item__desc">Десктопная версия пасьянса на Unreal Engine 5 c системой локализации и динамической сменой тем оформления.</p>
                             <div class="project-tags"> 
@@ -131,7 +222,7 @@
                 </section> 
             </main> 
             <footer class="footer">
-                <p class="footer__text">© 2025 Контакты</p>
+                <p class="footer__text">© 2025 Главная страница</p>
             </footer>
         </div>    
     </body>

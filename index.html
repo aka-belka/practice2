@@ -10,14 +10,24 @@
         <a class="skip-link" href="#main">Перейти к основному содержимому</a> 
         <div class="page"> 
             <header class="header">
-                <img class="header__photo" 
-                    src="images/mirea-50.jpg" 
-                    srcset="images/mirea-50.jpg 50w,
-                            images/mirea-75.jpg 75w,
-                            images/mirea-100.jpg 100w"
-                    sizes="50px"
-                    width="50" height="50" 
-                    alt="Логотип университета">
+                <picture>
+                    <source srcset="../images/mirea-50.avif 50w,
+                                    ../images/mirea-75.avif 75w,
+                                    ../images/mirea-100.avif 100w" 
+                            type="image/avif">
+                    <source srcset="../images/mirea-50.webp 50w,
+                                    ../images/mirea-75.webp 75w,
+                                    ../images/mirea-100.webp 100w" 
+                            type="image/webp">
+                    <img class="header__photo" 
+                        src="../images/mirea-50.jpg" 
+                        srcset="../images/mirea-50.jpg 50w,
+                                ../images/mirea-75.jpg 75w,
+                                ../images/mirea-100.jpg 100w"
+                        sizes="50px"
+                        width="50" height="50" 
+                        alt="Логотип университета">
+                </picture>
                 <h1 class="header__title">Бельская Валерия Сергеевна</h1>
             </header> 
             <nav class="nav" aria-label="Основная навигация"> 
